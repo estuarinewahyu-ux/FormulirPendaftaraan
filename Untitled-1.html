@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Pemesanan Massage Panggilan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+    form {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+    button {
+      background: #28a745;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+  <form id="orderForm">
+    <h2>Form Pemesanan Massage Panggilan</h2>
+
+    <label>Nama Lengkap</label>
+    <input type="text" name="nama" required>
+
+    <label>No. Telepon / WhatsApp</label>
+    <input type="tel" name="telepon" required>
+
+    <label>Alamat Lengkap</label>
+    <textarea name="alamat" rows="3" required></textarea>
+
+    <label>Jenis Massage</label>
+    <select name="jenis" required>
+      <option value="">-- Pilih --</option>
+      <option>Tradisional</option>
+      <option>Refleksi</option>
+      <option>Aromatherapy</option>
+      <option>Lainnya</option>
+    </select>
+
+    <label>Durasi</label>
+    <select name="durasi" required>
+      <option value="">-- Pilih --</option>
+      <option>60 menit</option>
+      <option>90 menit</option>
+      <option>120 menit</option>
+    </select>
+
+    <label>Terapis</label>
+    <select name="terapis" required>
+      <option value="">-- Pilih --</option>
+      <option>Pria</option>
+      <option>Wanita</option>
+      <option>Tidak ada preferensi</option>
+    </select>
+
+    <label>Tanggal Booking</label>
+    <input type="date" name="tanggal" required>
+
+    <label>Jam Booking</label>
+    <input type="time" name="jam" required>
+
+    <label>Metode Pembayaran</label>
+    <select name="pembayaran" required>
+      <option value="">-- Pilih --</option>
+      <option>Tunai</option>
+      <option>Transfer Bank</option>
+      <option>E-Wallet (OVO/DANA/Gopay)</option>
+    </select>
+
+    <label>Catatan Tambahan</label>
+    <textarea name="catatan" rows="3"></textarea>
+
+    <button type="submit">Kirim Pemesanan via WhatsApp</button>
+  </form>
+
+  <script>
+    document.getElementById("orderForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let nama = this.nama.value;
+      let telepon = this.telepon.value;
+      let alamat = this.alamat.value;
+      let jenis = this.jenis.value;
+      let durasi = this.durasi.value;
+      let terapis = this.terapis.value;
+      let tanggal = this.tanggal.value;
+      let jam = this.jam.value;
+      let pembayaran = this.pembayaran.value;
+      let catatan = this.catatan.value;
+
+      let pesan = `*Form Pemesanan Massage*%0A
+Nama: ${nama}%0A
+Telepon: ${telepon}%0A
+Alamat: ${alamat}%0A
+Jenis Massage: ${jenis}%0A
+Durasi: ${durasi}%0A
+Terapis: ${terapis}%0A
+Tanggal: ${tanggal}%0A
+Jam: ${jam}%0A
+Pembayaran: ${pembayaran}%0A
+Catatan: ${catatan}`;
+
+      // nomor WhatsApp admin: 6282233319155
+      let nomorAdmin = "6282233319155";
+      let url = https://wa.me/${nomorAdmin}?text=${pesan};
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
